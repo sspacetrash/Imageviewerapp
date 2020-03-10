@@ -7,7 +7,7 @@ Since my main focus of the app is to expand its functionality, a total of 5 sect
 MainActivity
 The addition in the main activity is the favorites button. When the user clicks on the star, it saves the image to the database, and the star turns and stays yellow to show that the image is favorited. If the user clicks it again, it removes the image from the database. This is achieved by stacking two imageViews on top of each other. The first button colored in grey(with ID favButton), was set to visible and grey on default. On the button’s onClickListener, it executes the FavoritesDBHelper.insert method, sets the favButton to invisible and the second button colored in yellow to visible. And then when the user clicks again, they are triggering another listener that deletes the record from database. In order to avoid duplicating images in the favorites database, I used CONFLICT_REPLACE in one of the arguments for insertWithOnConflict. Which replaces the record with the same primary key in the database. And since the search activity and main activity uses the same adapter, so this function will be about to work on both.
 
- REFRESHING CONTENT
+REFRESHING CONTENT
 When the user scrolls to the top and pulls down, a refresh is triggered and a new set of images will be replacing the current ones. This is implemented by using SwipeRefreshLayout, in the OnRefreshListener, a circular arrow will show the circle when pulled down to indicate it is refreshing. When the images are refreshed, it will perform the network call again, but instead of calling the first page, a random integer is generated using Math.random( ) to be passed as the argument for the network call, so whenever the user refreshes, they will get a new list of images.
 
 ERROR HANDLING
